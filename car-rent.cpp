@@ -9,9 +9,15 @@ using namespace std;
 void solve(){
 	
 
+int dist;
+cin>>dist;
+if(dist<300){
+	cout<<3000<<"\n";
+}
 
-
-
+else{
+	cout<<dist*10<<"\n";
+}
 
 
 
