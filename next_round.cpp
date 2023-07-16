@@ -7,10 +7,10 @@ const int N=0;
 
 int main(){
 	int n;
+	cin>>n;	
+	int arr[n];	
+
 	int pos;
-	cin>>n;
-	
-	int arr[n];
 	cin>>pos;
 	
 	for (int j=0;j<n;j++){

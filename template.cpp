@@ -1,6 +1,10 @@
-#include "bits/stdc++.h" // Include every standard library
-using namespace std;
+#include <bits/stdc++.h> // Include every standard library
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
 
+
+using namespace std;
+using namespace __gnu_pbds;
 typedef long long LL;
 typedef pair<int, int> pii;
 typedef pair<LL, LL> pll;
@@ -10,6 +14,9 @@ typedef vector<vi> vvi;
 typedef vector<pii> vii;
 typedef vector<LL> vl;
 typedef vector<vl> vvl;
+
+template<typename T> using Set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+template<typename T> using Multiset = tree<T, null_type, less_equal<T>,rb_tree_tag,tree_order_statistics_node_update>;
 
 double EPS = 1e-9;
 int INF = 1000000005;
@@ -97,15 +104,22 @@ inline string lowercase(string s)
 	return s;
 }
 
-inline void OPEN(string s)
-{
-#ifndef TESTING
-	freopen((s + ".txt").c_str(), "r", stdin);
-	freopen((s + ".txt").c_str(), "w", stdout);
-	freopen((s+ ".txt").c_str(),"w",stderr);
-#endif
-}
 
+void usaco(string filename = ""){
+    if(filename.size() > 0){
+        #ifndef ONLINE_JUDGE
+            freopen((filename + ".in").c_str(), "r", stdin);
+            freopen((filename + ".out").c_str(), "w", stdout);
+        #endif
+    }
+    else{
+        #ifndef ONLINE_JUDGE
+            freopen("input.txt", "r", stdin);
+            freopen("output.txt", "w", stdout);
+            freopen("error.txt", "w", stderr); 
+        #endif
+    }
+}  
 // end of template 
 
 
@@ -124,43 +138,20 @@ void solve(int t){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 //driver code starts
 
-int main(){
+int32_t main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+ 
+    usaco();
 
-	#ifndef ONLINE_JUDGE
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
-	freopen("error.txt","w",stderr);
-	#endif
+    int T = 1;
+    cin >> T;
 
-	int t;
-	cin>>t;
-for (int i=0;i<t;i++){
-	solve(i);
-}
-
-
-return 0;
-}
+    while(T--){
+        solve(T);
+    }
+    return 0;}

@@ -28,7 +28,7 @@ int binarysearch(int arr[], int size, int key)
 
 int main()
 {
-    // cout << "enter the number of elements :";
+    cout << "enter the number of elements :";
     int n;
     cin >> n;
 
