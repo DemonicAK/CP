@@ -57,6 +57,7 @@ int solve()
 int main()
 {
 	long long t;
+	// cout<<"Enter the number of test cases: ";
 	cin >> t;
 	int i = 1;
 	while (i < t)
