@@ -7,6 +7,8 @@ using namespace __gnu_pbds;
 
 typedef long long ll;
 
+
+
 typedef pair<ll, ll> pll;
 typedef pair<int, int> pii;
 typedef pair<string, string> pss;
@@ -162,8 +164,8 @@ void solve(int t)
 }
 
 // driver code starts
-
-int_fast32_t main()
+// int_fast32_t
+int32_t main()
 {
 
 	ios_base::sync_with_stdio(false);
