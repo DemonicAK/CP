@@ -24,6 +24,12 @@ void usaco(string filename = "")
 
 void solve(int t)
 {
+int n;cin>>n;
+vector<int> a(n);
+for(int i=0;i<n;i++)cin>>a[i];
+
+// print one integer — the minimal value of the maximum value in the sequence.
+
 
 }
 
@@ -39,10 +45,9 @@ int main()
     int T = 1;
     cin >> T;
 
-    while(T--)
+    while (T--)
     {
         solve(T);
-
     }
     return 0;
 }

@@ -161,6 +161,7 @@ void usaco(string filename = "")
 
 void solve(int t)
 {
+	
 }
 
 // driver code starts

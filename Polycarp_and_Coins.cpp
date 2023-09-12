@@ -26,23 +26,35 @@ void usaco(string filename = "")
 
 void solve(int t)
 {
-cout<<t;
+    // cout << t;
+
+    int amt;cin>>amt;
+    int c2=0,c1=0;
+    c2 = amt/3;c1 = amt/3;
+    if(amt%3==1){
+        c1++;
+    }
+    else if(amt%3==2){
+        c2++;
+    }
+
+    cout<<c1<<" "<<c2<<endl;
 
 }
 
-int32_t main()
+int main()
 {
 
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
 
     usaco();
 
     int T = 1;
     cin >> T;
 
-    while(T--)
+    while (T--)
     {
         solve(T);
     }

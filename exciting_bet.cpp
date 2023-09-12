@@ -2,7 +2,10 @@
 using namespace std;
 typedef long long ll;
 
-void usaco(string filename = "")
+// https : // codeforces.com/problemset/problem/1543/A  (Exciting Bets)
+
+        void
+        usaco(string filename = "")
 {
     if (filename.size() > 0)
     {
@@ -24,7 +27,6 @@ void usaco(string filename = "")
 
 void solve(int t)
 {
-
 }
 
 int main()
@@ -39,10 +41,21 @@ int main()
     int T = 1;
     cin >> T;
 
-    while(T--)
+    while (T--)
     {
-        solve(T);
-
+        // solve(T);
+        long long a, b;
+        cin >> a >> b;
+        if (a == b)
+            cout << 0 << " " << 0 << '\n';
+        else
+        {
+            long long maxexcite = abs(a - b);
+            ll g = maxexcite;
+            ll d=a%g;
+            long long m = min(d, g - d);
+            cout << g << " " << m << '\n';
+        }
     }
     return 0;
 }

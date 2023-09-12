@@ -1,3 +1,4 @@
+
 #include <bits/stdc++.h> // Include every standard library
 using namespace std;
 typedef long long ll;
@@ -20,29 +21,13 @@ void usaco(string filename = "")
 #endif
     }
 }
-// end of template
-
-void solve(int t)
-{
+int main(){
+// bool j=true;
+usaco();
+while (true){
+    int n;cin>>n;
+    if(n==42)break;
+    cout<<n<<"\n";
 
 }
-
-int main()
-{
-
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-
-    usaco();
-
-    int T = 1;
-    cin >> T;
-
-    while(T--)
-    {
-        solve(T);
-
-    }
-    return 0;
 }

@@ -1,7 +1,7 @@
 #include <bits/stdc++.h> // Include every standard library
 using namespace std;
 typedef long long ll;
-
+//  https://codeforces.com/problemset/problem/1535/B
 void usaco(string filename = "")
 {
     if (filename.size() > 0)
@@ -25,24 +25,38 @@ void usaco(string filename = "")
 void solve(int t)
 {
 
+
+
 }
 
 int main()
 {
 
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-
     usaco();
-
-    int T = 1;
+    int T= 1;
     cin >> T;
 
-    while(T--)
+    while (T--)
     {
-        solve(T);
+        // solve(T);
+        int n;cin>>n;
+        vector<int> a(n);
+        for(int &x:a)cin>>x;
 
+        sort(a.begin(),a.end(),[](int x,int y){
+            return (x%2)<(y%2);
+        });
+    int ans=0;
+        for(int i =0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                if(__gcd(a[i],2*a[j])>1){
+                    // cout<<"NO\n";
+                    ans++;
+                    // goto done;
+                }
+            }
+        }
+cout<<ans<<"\n";    
     }
     return 0;
 }

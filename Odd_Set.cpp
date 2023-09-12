@@ -1,3 +1,5 @@
+//  https://codeforces.com/problemset/problem/1542/A
+
 #include <bits/stdc++.h> // Include every standard library
 using namespace std;
 typedef long long ll;
@@ -25,6 +27,15 @@ void usaco(string filename = "")
 void solve(int t)
 {
 
+int n;cin>>n;n=2*n;
+int cntodd=0;
+for(int i=0;i<n;i++){
+    int val=0;cin>>val;
+    if(val%2==1)cntodd++;
+
+}
+if(cntodd==n/2)cout<<"yes"<<"\n";
+else cout<<"No"<<"\n";
 }
 
 int main()
@@ -39,10 +50,9 @@ int main()
     int T = 1;
     cin >> T;
 
-    while(T--)
+    while (T--)
     {
         solve(T);
-
     }
     return 0;
 }
