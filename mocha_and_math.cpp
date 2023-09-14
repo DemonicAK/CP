@@ -1,7 +1,7 @@
 #include <bits/stdc++.h> // Include every standard library
 using namespace std;
 typedef long long ll;
-
+//  https://codeforces.com/problemset/problem/1559/A
 void usaco(string filename = "")
 {
     if (filename.size() > 0)
@@ -29,8 +29,10 @@ vector<int> a(n);
 for(int i=0;i<n;i++)cin>>a[i];
 
 // print one integer — the minimal value of the maximum value in the sequence.
-
-
+int res = a[0];
+for (int i = 1; i < n; i++)
+    res &= a[i];
+cout << res << endl;
 }
 
 int main()

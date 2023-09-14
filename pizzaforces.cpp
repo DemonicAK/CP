@@ -1,7 +1,7 @@
 #include <bits/stdc++.h> // Include every standard library
 using namespace std;
 typedef long long ll;
-
+//  https://codeforces.com/problemset/problem/1555/A
 void usaco(string filename = "")
 {
     if (filename.size() > 0)
@@ -24,7 +24,8 @@ void usaco(string filename = "")
 
 void solve(int t)
 {
-
+    ll n;cin>>n;
+    cout << max(6LL, n + 1) / 2 * 5 << '\n';
 }
 
 int main()
@@ -39,7 +40,7 @@ int main()
     int T = 1;
     cin >> T;
 
-    while(T--)
+    while (T--)
     {
         solve(T);
     }

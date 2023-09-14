@@ -49,6 +49,9 @@ double PI = acos(-1);
 ll MOD = 998244353;
 int dirx[8] = {-1, 0, 0, 1, -1, -1, 1, 1};
 int diry[8] = {0, 1, -1, 0, -1, 1, -1, 1};
+#define inf 0x3f3f3f3f
+#define maxm 100005
+#define maxn 2005
 
 #ifdef TESTING
 #define DEBUG fprintf(stderr, "====TESTING====\n")

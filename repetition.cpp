@@ -1,7 +1,7 @@
 #include <bits/stdc++.h> // Include every standard library
 using namespace std;
 typedef long long ll;
-
+// https://cses.fi/problemset/task/1069
 void usaco(string filename = "")
 {
     if (filename.size() > 0)
@@ -24,7 +24,22 @@ void usaco(string filename = "")
 
 void solve(int t)
 {
-
+    string s;cin>>s;
+    ll ans = 1;
+    ll count = 1;
+    for(ll i=1;i<s.size();i++)
+    {
+        if(s[i]==s[i-1])
+        {
+            count++;
+        }
+        else
+        {
+            ans = max(ans,count);
+            count = 1;
+        }
+    }
+    cout<<max(ans,count)<<"\n";
 }
 
 int main()
@@ -37,9 +52,9 @@ int main()
     usaco();
 
     int T = 1;
-    cin >> T;
+    // cin >> T;
 
-    while(T--)
+    while (T--)
     {
         solve(T);
     }

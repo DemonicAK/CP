@@ -1,8 +1,10 @@
 #include <bits/stdc++.h> // Include every standard library
 using namespace std;
 typedef long long ll;
+// https : // cses.fi/problemset/task/1068/ 
 
-void usaco(string filename = "")
+        void
+        usaco(string filename = "")
 {
     if (filename.size() > 0)
     {
@@ -35,13 +37,21 @@ int main()
     cout.tie(nullptr);
 
     usaco();
-
-    int T = 1;
-    cin >> T;
-
-    while(T--)
+    ll n;
+    cin >> n;
+    while (n != 1)
     {
-        solve(T);
+        cout << n << " ";
+        if (n % 2 == 0)
+        {
+            n /= 2;
+        }
+        else
+        {
+            n = n * 3 + 1;
+        }
     }
+    cout << 1;
+
     return 0;
 }
