@@ -3,6 +3,7 @@
 using namespace std;
 const int N=0;
 
+// way too long words
 
 
 int main(){
