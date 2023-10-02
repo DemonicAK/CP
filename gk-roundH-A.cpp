@@ -1,6 +1,6 @@
 #include "bits/stdc++.h"
 using namespace std;
-
+// ada run
 int solve()
 {
 	long long length, runs;

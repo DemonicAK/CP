@@ -9,26 +9,15 @@ using namespace std;
 void solve(){
 	
 
-int dist;
-cin>>dist;
-if(dist<300){
-	cout<<3000<<"\n";
+long long n;
+cin>>n;
+long long b=n/2;
+if (n%2==0){
+	cout<<2*b*b<<"\n";
 }
-
 else{
-	cout<<dist*10<<"\n";
+	cout<<2*b*(b+1)<<"\n";
 }
-
-
-
-
-
-
-
-
-
-
-
 	
 }
 

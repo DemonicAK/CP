@@ -1,10 +1,7 @@
 #include "bits/stdc++.h"
 using namespace std;
-	
 
-
-
-
+// https://www.codechef.com/START53D/problems/MAKEABEQUAL
 
 void solve(){
 	
