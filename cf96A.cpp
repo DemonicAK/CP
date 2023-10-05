@@ -24,8 +24,22 @@ void usaco(string filename = "")
 
 void solve(int t)
 {
-
-    return ;
+string s;cin>>s;
+int count=0;
+for(int i=1;i<s.size();i++){
+    if(s[i-1]==s[i]){
+        count++;
+        if(count==6){
+            cout<<"YES"<<endl;
+            return;
+        }
+    }
+    else{
+        count=0;
+    }
+}
+cout<<"NO"<<endl;
+    return;
 }
 
 int main()
@@ -38,9 +52,9 @@ int main()
     usaco();
 
     int T = 1;
-    cin >> T;
+    // cin >> T;
 
-    while(T--)
+    while (T--)
     {
         solve(T);
     }

@@ -1,3 +1,4 @@
+
 #include <bits/stdc++.h> // Include every standard library
 using namespace std;
 typedef long long ll;
@@ -24,8 +25,13 @@ void usaco(string filename = "")
 
 void solve(int t)
 {
-
-    return ;
+    string name;
+    cin >> name;
+    set<char> username(name.begin(), name.end());
+    int n=username.size();
+    // cout<<n<<endl;
+    if(n%2)cout<<"IGNORE HIM!";
+    else cout<<"CHAT WITH HER!";
 }
 
 int main()
@@ -38,9 +44,9 @@ int main()
     usaco();
 
     int T = 1;
-    cin >> T;
+    // cin >> T;
 
-    while(T--)
+    while (T--)
     {
         solve(T);
     }

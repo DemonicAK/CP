@@ -24,8 +24,19 @@ void usaco(string filename = "")
 
 void solve(int t)
 {
-
-    return ;
+    string s;cin>>s;
+    vector<int> v(4,0);
+    for(int i=0;i<s.size();i+=2){
+        v[s[i]-'0']++;
+    }
+    string ans="";
+    for(int i=1;i<=3;i++){
+        while(v[i]--){
+            ans+=to_string(i);
+            ans+='+';
+        }
+    }
+    cout<<ans.substr(0,ans.size()-1);
 }
 
 int main()
@@ -38,9 +49,9 @@ int main()
     usaco();
 
     int T = 1;
-    cin >> T;
+    // cin >> T;
 
-    while(T--)
+    while (T--)
     {
         solve(T);
     }

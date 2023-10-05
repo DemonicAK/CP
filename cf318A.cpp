@@ -1,6 +1,6 @@
 #include <bits/stdc++.h> // Include every standard library
 using namespace std;
-typedef long long ll;
+typedef long long  ll;
 
 void usaco(string filename = "")
 {
@@ -25,7 +25,19 @@ void usaco(string filename = "")
 void solve(int t)
 {
 
-    return ;
+    ll n, k;
+    cin >> n >> k;
+
+    if (k <= (n + 1) / 2)
+    {
+        cout << 2 * k - 1 << endl;
+    }
+    else
+    {
+        cout << 2 * (k - (n + 1) / 2) << endl;
+    }
+return;
+
 }
 
 int main()
@@ -38,9 +50,9 @@ int main()
     usaco();
 
     int T = 1;
-    cin >> T;
+    // cin >> T;
 
-    while(T--)
+    while (T--)
     {
         solve(T);
     }
