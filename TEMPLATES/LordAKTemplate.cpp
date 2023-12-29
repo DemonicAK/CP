@@ -94,7 +94,6 @@ typedef set<pll> spll;
 #define gc getchar_unlocked
 #define setpr(x) cout<<setprecision(x)<<fixed
 #define fastIO ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
-#pragma GCC target("AVX")
 //----------CONSTANTS----------
 const ld PI = acos(-1);
 const ld EPS = 1e-9;
@@ -185,7 +184,7 @@ void solve(){
 	// rec(n);
 }	
 //----------MAIN----------
-int_fast32_t main()
+int32_t main()
 {
     fastIO;
     usaco();
