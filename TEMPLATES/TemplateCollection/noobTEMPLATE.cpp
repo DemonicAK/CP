@@ -1,13 +1,10 @@
 #include <bits/stdc++.h> // Include every standard library
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
-
 using namespace std;
 using namespace __gnu_pbds;
 
 typedef long long ll;
-
-
 
 typedef pair<ll, ll> pll;
 typedef pair<int, int> pii;
@@ -15,9 +12,9 @@ typedef pair<string, string> pss;
 typedef vector<int> vi;
 typedef vector<vi> vvi;
 typedef vector<pii> vii;
-typedef vector<ll> vl;
+typedef vector<ll> vll;
 typedef vector<pll> vpl;
-typedef vector<vl> vvl;
+typedef vector<vll> vvll;
 typedef unordered_map<int, int> hmpi;
 typedef unordered_map<ll, ll> hmpll;
 typedef unordered_map<int, pii> hmppi;
@@ -53,6 +50,8 @@ int diry[8] = {0, 1, -1, 0, -1, 1, -1, 1};
 #define maxm 100005
 #define maxn 2005
 
+
+
 #ifdef TESTING
 #define DEBUG fprintf(stderr, "====TESTING====\n")
 #define VALUE(x) cerr << "The value of " << #x << " is " << x << endl
@@ -63,15 +62,15 @@ int diry[8] = {0, 1, -1, 0, -1, 1, -1, 1};
 #define debug(...)
 #endif
 
-#define gc getchar_unlocked
-#define Fo(i, k, n) for (i = k; k < n ? i < n : i > n; k < n ? i += 1 : i -= 1)
-#define deb(x) cout << #x << "=" << x << endl
-#define clr(x) memset(x, false, sizeof(x))
-#define forn(i, e) for (ll i = 0; i < e; i++)
-#define forsn(i, s, e) for (ll i = s; i < e; i++)
-#define rforn(i, s) for (ll i = s; i >= 0; i--)
-#define rforsn(i, s, e) for (ll i = s; i >= e; i--)
-#define sz(x) ((ll)(x).size())
+// #define gc getchar_unlocked
+// #define Fo(i, k, n) for (i = k; k < n ? i < n : i > n; k < n ? i += 1 : i -= 1)
+// #define deb(x) cout << #x << "=" << x << endl
+// #define clr(x) memset(x, false, sizeof(x))
+// #define forn(i, e) for (ll i = 0; i < e; i++)
+// #define forsn(i, s, e) for (ll i = s; i < e; i++)
+// #define rforn(i, s) for (ll i = s; i >= 0; i--)
+// #define rforsn(i, s, e) for (ll i = s; i >= e; i--)
+// #define sz(x) ((ll)(x).size())
 
 #define FOR(a, b, c) for (int(a) = (b); (a) < (c); ++(a))
 #define FORN(a, b, c) for (int(a) = (b); (a) <= (c); ++(a))

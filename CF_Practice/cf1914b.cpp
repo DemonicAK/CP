@@ -1,7 +1,6 @@
 #include <bits/stdc++.h> // Include every standard library
 using namespace std;
 typedef long long ll;
-//  https://cses.fi/problemset/task/1094
 
 void usaco(string filename = "")
 {
@@ -23,20 +22,19 @@ void usaco(string filename = "")
 }
 // end of template
 
-void solve()
+void solve(int t)
 {
-    int n;cin>>n;
-    vector<int> v(n);
-    for(int i=0;i<n;i++)cin>>v[i];
-    ll ans = 0;
-    for(int i=1;i<n;i++){
-        if(v[i]<v[i-1]){
-            ans+=v[i-1]-v[i];
-            v[i]=v[i-1];
-        }
+    int n,k;
+    cin>>n>>k;
+    for(int i=n-k;i>=1;i--){
+        cout<<i<<" ";
     }
-    cout<<ans;
+    for(int i=n-k+1;i<=n;i++){
+        cout<<i<<" ";
+    }
+cout<<"\n";
 
+    return;
 }
 
 int main()
@@ -47,6 +45,13 @@ int main()
     cout.tie(nullptr);
 
     usaco();
-    solve();
+
+    int T = 1;
+    cin >> T;
+
+    while (T--)
+    {
+        solve(T);
+    }
     return 0;
 }

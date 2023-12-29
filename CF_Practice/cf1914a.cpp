@@ -1,7 +1,7 @@
 #include <bits/stdc++.h> // Include every standard library
 using namespace std;
 typedef long long ll;
-//  https://cses.fi/problemset/task/1071
+
 void usaco(string filename = "")
 {
     if (filename.size() > 0)
@@ -24,11 +24,26 @@ void usaco(string filename = "")
 
 void solve(int t)
 {
-    ll r,c;
-    cin>>r>>c;
-    cout<<max(r,c)*max(r,c)-min(r,c)+1;
+    int n;
+    cin>>n;
+    string s;
+    cin >> s;
+    // int n = s.size();
+    unordered_map<char, int> freq;
+    for (int i = 0; i < n; i++)
+        freq[s[i]]++;
+    int res = 0;
+    for (auto it : freq)
+    {
+        int mins = it.first - 'A'+1;
+        // cout<<"mins"<<mins<<endl;
+        it.second -= mins;
+        if (it.second >= 0)
+            res++;
+    }
+    cout << res << endl;
 
-    cout<<"\n";
+    return;
 }
 
 int main()

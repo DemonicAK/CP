@@ -24,8 +24,15 @@ void usaco(string filename = "")
 
 void solve(int t)
 {
+string recipe;cin>>recipe;
+int b,s,c,pb,ps,pc,r;cin>>b>>s>>c>>pb>>ps>>pc>>r;
+unordered_map<char,int> m;
+for(auto ch:recipe)m[ch]++;
 
-    return ;
+
+
+
+    return;
 }
 
 int main()
@@ -38,9 +45,9 @@ int main()
     usaco();
 
     int T = 1;
-    cin >> T;
+    // cin >> T;
 
-    while(T--)
+    while (T--)
     {
         solve(T);
     }
