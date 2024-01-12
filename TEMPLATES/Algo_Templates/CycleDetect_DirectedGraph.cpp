@@ -1,3 +1,11 @@
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+using namespace std;
+typedef long long ll;
+typedef vector<ll> vll;
+
 vll v[mxN];
 vll vis(mxN);
 vll in(mxN);
