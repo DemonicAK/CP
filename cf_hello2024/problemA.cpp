@@ -1,6 +1,6 @@
 /*
-Problem Name: 
-Problem Link: 
+Problem Name:  Wallet Exchange
+Problem Link: https://codeforces.com/contest/1919/problem/0
 Author: Arijit Kar (DemonicAK)
 */
 //----------HEADER----------
@@ -27,7 +27,6 @@ template <typename T>
 using Multiset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
 //----------MACROS----------
 typedef long long ll;
-#define int long long
 #define ll long long
 #define ull unsigned long long
 #define ld long double
@@ -178,10 +177,12 @@ int rec(int n)
     return 0;
 }
 void solve(){
-	int n; see(n);
+    ll a,b; see(a,b);
+    ll n=a+b;
+    if(n%2==0)cout<<"Bob";
+    else cout<<"Alice";
 
-
-	// rec(n);
+    // rec(n);
 }	
 //----------MAIN----------
 int32_t main()
@@ -191,7 +192,7 @@ int32_t main()
     int T=1;
     cin>>T;
     while(T--){
-    	solve();
-    	cout<<'\n';
+        solve();
+        cout<<'\n';
     }
 }
