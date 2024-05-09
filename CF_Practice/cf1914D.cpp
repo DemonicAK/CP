@@ -223,31 +223,64 @@ inline string lowercase(string s)
         s[i] = s[i] - 'A' + 'a';
     return s;
 }
-const int N = 1;
-const int M = 1;
+const int N = 5;
+const int M = 1e5 + 4;
 int dp[N][M] = {0};
 
 //----------SOLUTION----------
+
+vi best3(vi &a)
+{
+    int mx1 = -1, mx2 = -1, mx3 = -1;
+
+    rep(i, a.size())
+    {
+        if (mx1 == -1 or a[i] > a[mx1])
+        {
+            mx3 = mx2;
+            mx2 = mx1;
+            mx1 = i;
+        }
+        else if (mx2 == -1 or a[i] > a[mx2])
+        {
+            mx3 = mx2;
+            mx2 = i;
+        }
+
+        else if (mx3 == -1 or a[i] > a[mx3])
+        {
+            mx3 = i;
+        }
+    }
+
+    return {mx1, mx2, mx3};
+}
 void solve()
 {
     DEBUG;
-    ll n, k;
-    see(n, k);
-    vll a, b;
-    seev(a, n);
-    seev(b, n);
-    ll sum = 0,ans = 0, mx = 0;
-    rep(i, min(n, k))
-    {
-        sum += a[i];
-        mx = max(mx, b[i]);
+    int n, m = 3; // n is col here m is rows
+    see(n);
+    // mxn mtrix as ip
+    vvi f(m, vi(n, 0));
+    rep(i, m) rep(j, n) see(f[i][j]);
 
-        ans = max(ans, sum + (k - i - 1) * mx);
+// best 3 days for each activity (as there is only 3 days and 3 activities to conflict)
+    auto best3a = best3(f[0]);
+    auto best3b = best3(f[1]);
+    auto best3c = best3(f[2]);
+    int ans = INT_MIN;
+
+    rep(i, 3) rep(j, 3) rep(k, 3)
+    {
+        // x y z are best days
+        int x = best3a[i], y = best3b[j], z = best3c[k];
+
+        // check if x y z are dont conflict  we can  check for max value
+        if (x != y and y != z and x != z)ans = max(ans, f[0][x] + f[1][y] + f[2][z]);
+        
     }
 
-    cout << ans;
-
-    // memset(dp, -1, n * M * sizeof(int));
+    cout << ans << endl;
 }
 //----------MAIN----------
 int32_t main()

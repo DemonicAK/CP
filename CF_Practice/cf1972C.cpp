@@ -158,9 +158,9 @@ const long long INFF = LONG_LONG_MAX;
 #define mod 1000000007 // 1e9+7
 ll MOD = 998244353;
 #define infL 1e18
-const int inf = 1e9;
-const int mxN = 1e5 + 7; // row
-const int mxM = 1e5 + 7; // col
+const int infinity = 1e9;
+#define mxN 1000005
+const int N = mxN;
 int dirx[8] = {-1, 0, 0, 1, -1, -1, 1, 1};
 int diry[8] = {0, 1, -1, 0, -1, 1, -1, 1};
 
@@ -223,31 +223,64 @@ inline string lowercase(string s)
         s[i] = s[i] - 'A' + 'a';
     return s;
 }
-const int N = 1;
-const int M = 1;
-int dp[N][M] = {0};
 
 //----------SOLUTION----------
+
+ll calc(vll &a, ll ans)
+{
+    int n = a.size();
+    ll need = 0, t = 0;
+    rep(i, n)
+    {
+        if (a[i] > ans / n)
+            t++;
+
+        else
+        {
+            ll tmp = ans / n - a[i];
+            need += tmp;
+        }
+    }
+    need += max(ans % n - t, 0ll);
+    return need;
+}
 void solve()
 {
-    DEBUG;
-    ll n, k;
-    see(n, k);
-    vll a, b;
-    seev(a, n);
-    seev(b, n);
-    ll sum = 0,ans = 0, mx = 0;
-    rep(i, min(n, k))
+    int n;
+    ll k;
+    cin >> n;
+    cin >> k;
+    vll a_arr(n);
+    for (int i = 0; i < n; i++)
     {
-        sum += a[i];
-        mx = max(mx, b[i]);
-
-        ans = max(ans, sum + (k - i - 1) * mx);
+        cin >> a_arr[i];
     }
-
-    cout << ans;
-
-    // memset(dp, -1, n * M * sizeof(int));
+    ll l = 0, r = 1e18;
+    while (l < r)
+    {
+        ll mid = (l + r + 1) / 2;
+        ll ans = mid + (n - 1);
+        ll need = 0, t = 0;
+        for (int i = 0; i < n; i++)
+        {
+            if (a_arr[i] > ans / n)
+            {
+                t++;
+            }
+            else
+            {
+                ll tmp = ans / n - a_arr[i];
+                need += tmp;
+            }
+        }
+        need += max(ans % n - t, 0ll);
+        if (need <= k)
+            l = mid;
+        else
+            r = mid - 1;
+    }
+    cout << l;
+    cout << endl;
 }
 //----------MAIN----------
 int32_t main()

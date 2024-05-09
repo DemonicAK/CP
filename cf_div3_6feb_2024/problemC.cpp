@@ -158,9 +158,9 @@ const long long INFF = LONG_LONG_MAX;
 #define mod 1000000007 // 1e9+7
 ll MOD = 998244353;
 #define infL 1e18
-const int inf = 1e9;
-const int mxN = 1e5 + 7; // row
-const int mxM = 1e5 + 7; // col
+const int infinity = 1e9;
+#define mxN 1000005
+const int N = mxN;
 int dirx[8] = {-1, 0, 0, 1, -1, -1, 1, 1};
 int diry[8] = {0, 1, -1, 0, -1, 1, -1, 1};
 
@@ -223,31 +223,45 @@ inline string lowercase(string s)
         s[i] = s[i] - 'A' + 'a';
     return s;
 }
-const int N = 1;
-const int M = 1;
-int dp[N][M] = {0};
 
 //----------SOLUTION----------
+ll n, m, k;
 void solve()
 {
     DEBUG;
-    ll n, k;
-    see(n, k);
-    vll a, b;
-    seev(a, n);
-    seev(b, n);
-    ll sum = 0,ans = 0, mx = 0;
-    rep(i, min(n, k))
+    see(n, m, k);
+
+    vi a, b;
+    
+    si myseta,mysetb,myset;
+    forn(i, 0, n)
     {
-        sum += a[i];
-        mx = max(mx, b[i]);
-
-        ans = max(ans, sum + (k - i - 1) * mx);
+        int x;
+        see(x);
+        if (x <= k )
+            myseta.insert(x);
+        
     }
+    forn(i, 0, m)
+    {
+        int x;
+        see(x);
+        if (x <= k )
+             mysetb.insert(x);
+         
+    }
+foreach(it, myseta)myset.insert(it);
+foreach(it, mysetb)myset.insert(it);
+    if ( sz(myseta) < (k >>1) || sz(mysetb) < (k >>1) || sz(myset)!=k ){cout<<"NO";return;}
 
-    cout << ans;
+  if(sz(myset)==k)cout<<"YES";
+  return ;
 
-    // memset(dp, -1, n * M * sizeof(int));
+    // foreach(it, myset)dbg(it);
+    // dbg(sz(a), sz(b));
+
+
+
 }
 //----------MAIN----------
 int32_t main()

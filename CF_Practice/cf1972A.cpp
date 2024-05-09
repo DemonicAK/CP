@@ -158,9 +158,9 @@ const long long INFF = LONG_LONG_MAX;
 #define mod 1000000007 // 1e9+7
 ll MOD = 998244353;
 #define infL 1e18
-const int inf = 1e9;
-const int mxN = 1e5 + 7; // row
-const int mxM = 1e5 + 7; // col
+const int infinity = 1e9;
+#define mxN 1000005
+const int N = mxN;
 int dirx[8] = {-1, 0, 0, 1, -1, -1, 1, 1};
 int diry[8] = {0, 1, -1, 0, -1, 1, -1, 1};
 
@@ -223,31 +223,38 @@ inline string lowercase(string s)
         s[i] = s[i] - 'A' + 'a';
     return s;
 }
-const int N = 1;
-const int M = 1;
-int dp[N][M] = {0};
 
 //----------SOLUTION----------
 void solve()
 {
     DEBUG;
-    ll n, k;
-    see(n, k);
-    vll a, b;
+    int n;
+    see(n);
+    vi a, b;
+    // a is proposal
+    //  b is required
     seev(a, n);
     seev(b, n);
-    ll sum = 0,ans = 0, mx = 0;
-    rep(i, min(n, k))
-    {
-        sum += a[i];
-        mx = max(mx, b[i]);
+    foreach (it, a)
+        dbg(it);
+    foreach (it, b)
+        dbg(it);
 
-        ans = max(ans, sum + (k - i - 1) * mx);
+    int a1 = 0, b1 = 0, cnt = 0;
+    while (a1 < n && b1 < n)
+    {
+        if (a[a1] > b[b1])
+        {
+            b1++;
+            cnt++;
+        }
+        else
+        {
+            a1++, b1++;
+        }
     }
 
-    cout << ans;
-
-    // memset(dp, -1, n * M * sizeof(int));
+    cout << cnt;
 }
 //----------MAIN----------
 int32_t main()

@@ -158,9 +158,9 @@ const long long INFF = LONG_LONG_MAX;
 #define mod 1000000007 // 1e9+7
 ll MOD = 998244353;
 #define infL 1e18
-const int inf = 1e9;
-const int mxN = 1e5 + 7; // row
-const int mxM = 1e5 + 7; // col
+const int infinity = 1e9;
+#define mxN 1000005
+const int N = mxN;
 int dirx[8] = {-1, 0, 0, 1, -1, -1, 1, 1};
 int diry[8] = {0, 1, -1, 0, -1, 1, -1, 1};
 
@@ -223,31 +223,35 @@ inline string lowercase(string s)
         s[i] = s[i] - 'A' + 'a';
     return s;
 }
-const int N = 1;
-const int M = 1;
-int dp[N][M] = {0};
 
 //----------SOLUTION----------
+int n;
 void solve()
 {
     DEBUG;
-    ll n, k;
-    see(n, k);
-    vll a, b;
-    seev(a, n);
-    seev(b, n);
-    ll sum = 0,ans = 0, mx = 0;
-    rep(i, min(n, k))
+    see(n);
+    vi a;
+    seev(a, 2*n);
+    si myset;
+    vi final;
+    foreach(x,a)dbg(x);
+    foreach (x, a)
     {
-        sum += a[i];
-        mx = max(mx, b[i]);
 
-        ans = max(ans, sum + (k - i - 1) * mx);
+        if (myset.find(x) == myset.end())
+        {
+            myset.insert(x);
+        }
+        else
+        {
+            final.pb(x);
+            myset.erase(x);
+        }
     }
 
-    cout << ans;
+    reverse(final.begin(),final.end());
 
-    // memset(dp, -1, n * M * sizeof(int));
+    forn(i, 0, final.size()) cout << final[i]<<" ";
 }
 //----------MAIN----------
 int32_t main()

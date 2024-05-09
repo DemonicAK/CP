@@ -158,9 +158,9 @@ const long long INFF = LONG_LONG_MAX;
 #define mod 1000000007 // 1e9+7
 ll MOD = 998244353;
 #define infL 1e18
-const int inf = 1e9;
-const int mxN = 1e5 + 7; // row
-const int mxM = 1e5 + 7; // col
+const int infinity = 1e9;
+#define mxN 1000005
+const int N = mxN;
 int dirx[8] = {-1, 0, 0, 1, -1, -1, 1, 1};
 int diry[8] = {0, 1, -1, 0, -1, 1, -1, 1};
 
@@ -223,31 +223,46 @@ inline string lowercase(string s)
         s[i] = s[i] - 'A' + 'a';
     return s;
 }
-const int N = 1;
-const int M = 1;
-int dp[N][M] = {0};
 
 //----------SOLUTION----------
+
 void solve()
 {
     DEBUG;
-    ll n, k;
-    see(n, k);
-    vll a, b;
-    seev(a, n);
-    seev(b, n);
-    ll sum = 0,ans = 0, mx = 0;
-    rep(i, min(n, k))
+    int n, m;
+    see(n, m);
+    vvi gr(n, vi(m, 0));
+    rep(i, n)
     {
-        sum += a[i];
-        mx = max(mx, b[i]);
-
-        ans = max(ans, sum + (k - i - 1) * mx);
+        rep(j, m)
+        {
+            char x;
+            see(x);
+            if (x == 'B')
+                gr[i][j] = 1;
+        }
     }
 
-    cout << ans;
+    string ans = "YES";
+    if (gr[0][0] != gr[n - 1][m - 1])
 
-    // memset(dp, -1, n * M * sizeof(int));
+    {
+      bool  impossible = true;
+        rep(j, m-1) if (gr[0][j] != gr[0][j + 1] or gr[n - 1][j] != gr[n - 1][j + 1])
+            impossible = false;
+
+        if (impossible)
+            ans = "NO";
+
+        impossible = true;
+            rep(i, n-1) if (gr[i][0] != gr[i + 1][0] or gr[i][m - 1] != gr[i + 1][m - 1])
+                impossible = false;
+
+        if (impossible)
+            ans = "NO";
+    }
+    cout<<ans;
+    return;
 }
 //----------MAIN----------
 int32_t main()

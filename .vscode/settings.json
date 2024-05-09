@@ -8,6 +8,15 @@
     "latch": "cpp",
     "limits": "cpp",
     "semaphore": "cpp",
-    "valarray": "cpp"
+    "valarray": "cpp",
+    "array": "cpp",
+    "bitset": "cpp",
+    "string_view": "cpp",
+    "initializer_list": "cpp",
+    "ranges": "cpp",
+    "span": "cpp",
+    "stacktrace": "cpp",
+    "regex": "cpp",
+    "iostream": "cpp"
   }
 }
