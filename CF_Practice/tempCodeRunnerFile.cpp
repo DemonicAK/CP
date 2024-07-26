@@ -1,2 +1,5 @@
-    // if (sz == a.size())
-    //     return 0;
+    // if (cnt & 1)
+    // {
+    //     putl(yes);
+    //     return;
+    // }
