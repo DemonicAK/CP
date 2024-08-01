@@ -9,8 +9,9 @@ cses-- cses.fi
 
 ## run this command in your folder (in linux) to delete all the binary Files generated during the test/ running of program
 
-`
- find . -type f -executable | xargs rm
-`
+`find . -type f -executable | xargs rm`
 
 it is for bash terminal can be used anywhere
+
+CSES DP BLOG FOR EDITORIAL
+[https://codeforces.com/blog/entry/70018]

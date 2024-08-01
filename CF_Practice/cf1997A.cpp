@@ -231,59 +231,43 @@ int diry[8] = {0, 1, -1, 0, -1, 1, -1, 1};
 const int N = 1;
 const int M = 1;
 int dp[N][M] = {0};
-int n, k;
+int n;
 
 //----------SOLUTION----------
 void solve(int tc)
 {
     DEBUG;
     dbg(tc);
-    see(n, k);
-    vvi a(n, vi(n, 0));
+    memset(dp, -1, N * M * sizeof(int));
+    // see(n);
+    string s;
 
-    rep(i, n) rep(j, n)
+    see(s);
+    int n = s.size();
+    int val = -1;
+    bool flag = true;
+    for (int i = 1; i < s.size(); i++)
     {
-        char x;
-        see(x);
-        if (x == '1')
-            a[i][j] = 1;
-    }
-    int cnt = 0;
-    if (k == 1)
-        rep(i, n)
+        cout << s[i - 1];
+        if (s[i] == s[i - 1] && flag == true)
         {
-            rep(j, n)
-            {
-                cout << a[i][j];
-                // cnt++;
-            }
-            cout << '\n';
-        }
-    // dbg(cnt);
+            // val=i;
+            char curr = (s[i] == 'z' ? 'y' : s[i] + 1);
+            cout << curr;
+            flag = false;
 
-    // vvi b(k, vi(k, 0));
-    // int bx = 0, by = 0;
-    // for (int i = 0; i < n; i += k)
-    // {
-    //     bx++;
-    //     for (int j = 0; j < n; j += k)
-    //     {
-    //         by++;
-    //         if (a[i][j])
-    //             b[bx][by] = 1;
-    //     }
-    // }
-    else
-        for (int i = 0; i < n; i += k)
-        {
-            for (int j = 0; j < n; j += k)
-            {
-                // if(a[i][j])b[i][j]=1;
-                // cout << b[i][j] << " ";
-                cout << a[i][j];
-            }
-            cout << '\n';
+            // break;
         }
+    }
+    cout << s[n - 1];
+    if (flag == true)
+    {
+
+        char curr = (s[n - 1] == 'z' ? 'y' : s[n - 1] + 1);
+        cout << curr;
+    }
+    // cout << curr << s;
+    cout << "\n";
 }
 //----------MAIN----------
 int32_t main()

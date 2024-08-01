@@ -231,59 +231,30 @@ int diry[8] = {0, 1, -1, 0, -1, 1, -1, 1};
 const int N = 1;
 const int M = 1;
 int dp[N][M] = {0};
-int n, k;
+int n;
 
 //----------SOLUTION----------
 void solve(int tc)
 {
     DEBUG;
     dbg(tc);
-    see(n, k);
-    vvi a(n, vi(n, 0));
-
-    rep(i, n) rep(j, n)
+    memset(dp, -1, N * M * sizeof(int));
+    see(n);
+    int cnt = 0, val = 0;
+    rep(i, n)
     {
-        char x;
+        int x;
         see(x);
-        if (x == '1')
-            a[i][j] = 1;
+        if (n == 1)
+        {
+            putl(x);
+            return;
+        }
+        if (!(cnt & 1))
+            maxoff(val, x);
+        cnt++;
     }
-    int cnt = 0;
-    if (k == 1)
-        rep(i, n)
-        {
-            rep(j, n)
-            {
-                cout << a[i][j];
-                // cnt++;
-            }
-            cout << '\n';
-        }
-    // dbg(cnt);
-
-    // vvi b(k, vi(k, 0));
-    // int bx = 0, by = 0;
-    // for (int i = 0; i < n; i += k)
-    // {
-    //     bx++;
-    //     for (int j = 0; j < n; j += k)
-    //     {
-    //         by++;
-    //         if (a[i][j])
-    //             b[bx][by] = 1;
-    //     }
-    // }
-    else
-        for (int i = 0; i < n; i += k)
-        {
-            for (int j = 0; j < n; j += k)
-            {
-                // if(a[i][j])b[i][j]=1;
-                // cout << b[i][j] << " ";
-                cout << a[i][j];
-            }
-            cout << '\n';
-        }
+    putl(val);
 }
 //----------MAIN----------
 int32_t main()

@@ -231,59 +231,75 @@ int diry[8] = {0, 1, -1, 0, -1, 1, -1, 1};
 const int N = 1;
 const int M = 1;
 int dp[N][M] = {0};
-int n, k;
+int n;
+string a, b;
 
 //----------SOLUTION----------
 void solve(int tc)
 {
     DEBUG;
     dbg(tc);
-    see(n, k);
-    vvi a(n, vi(n, 0));
+    memset(dp, -1, N * M * sizeof(int));
+    int q;
+    see(n, q, a, b);
 
-    rep(i, n) rep(j, n)
-    {
-        char x;
-        see(x);
-        if (x == '1')
-            a[i][j] = 1;
-    }
-    int cnt = 0;
-    if (k == 1)
-        rep(i, n)
-        {
-            rep(j, n)
-            {
-                cout << a[i][j];
-                // cnt++;
-            }
-            cout << '\n';
-        }
-    // dbg(cnt);
-
-    // vvi b(k, vi(k, 0));
-    // int bx = 0, by = 0;
-    // for (int i = 0; i < n; i += k)
+    // vvi prefixA(n,vi(26,0)),prefixB(n,vi(26,0));
+    vvi prefixA(n + 1, vi(26, 0)), prefixB(n + 1, vi(26, 0));
+    // vi pre;
+    // int val = 0;
+    // rep(i, n)
     // {
-    //     bx++;
-    //     for (int j = 0; j < n; j += k)
+    //     if (a[i] != b[i])
+    //         val++;
+    //     pre.pb(val);
+    // }
+
+    // vvi differ(n,vi(26,0));
+    // preprocessing
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 0; j < 26; j++)
+        {
+            char curr = j + 'a';
+            prefixA[i][j] = prefixA[i - 1][j];
+            prefixB[i][j] = prefixB[i - 1][j];
+            if (a[i - 1] == curr)
+            {
+                prefixA[i][j]++;
+            }
+            // else
+
+            if (b[i - 1] == curr)
+                prefixB[i][j]++;
+            // else
+        }
+    }
+    // repsh(i, n)
+    // {
+    //     rep(j, 26)
     //     {
-    //         by++;
-    //         if (a[i][j])
-    //             b[bx][by] = 1;
+    //         char curr = j + 'a';
+
     //     }
     // }
-    else
-        for (int i = 0; i < n; i += k)
+
+    tc(q)
+    {
+
+        int l, r;
+        see(l, r);
+        int diff = 0;
+        // int diff = pre[r - 1] - pre[l - 1];
+        rep(j, 26)
         {
-            for (int j = 0; j < n; j += k)
-            {
-                // if(a[i][j])b[i][j]=1;
-                // cout << b[i][j] << " ";
-                cout << a[i][j];
-            }
-            cout << '\n';
+            int diff1 = prefixA[r][j] - prefixA[l - 1][j]; // it is for a string
+            int diff2 = prefixB[r][j] - prefixB[l - 1][j]; // it is for a string
+            diff += abs(diff1 - diff2);
         }
+        putl(diff / 2); // idk y it works
+    }
+
+    return;
 }
 //----------MAIN----------
 int32_t main()

@@ -228,69 +228,56 @@ const int mxN = 1e5 + 7; // row
 const int mxM = 1e5 + 7; // col
 int dirx[8] = {-1, 0, 0, 1, -1, -1, 1, 1};
 int diry[8] = {0, 1, -1, 0, -1, 1, -1, 1};
-const int N = 1;
+const int N = 1e6 + 5;
 const int M = 1;
-int dp[N][M] = {0};
-int n, k;
+int dp[N];
+int n;
 
 //----------SOLUTION----------
+int f(int n)
+{
+    if (n < 0)
+        return 0;
+    if (n == 0 || n == 1)
+        return 1;
+    if (dp[n] != -1)
+        return dp[n];
+    ll ans = 0;
+    for (int i = 1; i <= 6; i++)
+    {
+        if (n - i >= 0)
+            ans += (f(n - i) % mod);
+    }
+    // dbg(ans);
+    return dp[n] = ans % mod;
+}
 void solve(int tc)
 {
     DEBUG;
     dbg(tc);
-    see(n, k);
-    vvi a(n, vi(n, 0));
+    see(n);
+    dbg(n);
+    // vi dp(n + 2, -1);
+    memset(dp, -1, N);
 
-    rep(i, n) rep(j, n)
-    {
-        char x;
-        see(x);
-        if (x == '1')
-            a[i][j] = 1;
-    }
-    int cnt = 0;
-    if (k == 1)
-        rep(i, n)
-        {
-            rep(j, n)
-            {
-                cout << a[i][j];
-                // cnt++;
-            }
-            cout << '\n';
-        }
-    // dbg(cnt);
+    dp[0] = 1;
+    dp[1] = 1;
+    int ans = f(n);
 
-    // vvi b(k, vi(k, 0));
-    // int bx = 0, by = 0;
-    // for (int i = 0; i < n; i += k)
-    // {
-    //     bx++;
-    //     for (int j = 0; j < n; j += k)
-    //     {
-    //         by++;
-    //         if (a[i][j])
-    //             b[bx][by] = 1;
-    //     }
-    // }
-    else
-        for (int i = 0; i < n; i += k)
-        {
-            for (int j = 0; j < n; j += k)
-            {
-                // if(a[i][j])b[i][j]=1;
-                // cout << b[i][j] << " ";
-                cout << a[i][j];
-            }
-            cout << '\n';
-        }
+    putl(ans);
+    return;
 }
 //----------MAIN----------
 int32_t main()
 {
     IOSETUP();
     int Tc = 1, tc = 0;
-    cin >> Tc;
+    // cin >> Tc;
     tc(Tc) solve(tc++);
+#ifdef DemonicAK_DEBUG
+    clock_t tStart = clock();
+    cerr << fixed << setprecision(10) << "\nTime Taken: " << (double)(clock() - tStart) / CLOCKS_PER_SEC << endl;
+#endif
+
     return 0;
 }

@@ -228,62 +228,37 @@ const int mxN = 1e5 + 7; // row
 const int mxM = 1e5 + 7; // col
 int dirx[8] = {-1, 0, 0, 1, -1, -1, 1, 1};
 int diry[8] = {0, 1, -1, 0, -1, 1, -1, 1};
-const int N = 1;
+const int N = 1e5 + 5;
 const int M = 1;
 int dp[N][M] = {0};
-int n, k;
+int n, b[N], a[N];
 
 //----------SOLUTION----------
 void solve(int tc)
 {
     DEBUG;
     dbg(tc);
-    see(n, k);
-    vvi a(n, vi(n, 0));
-
-    rep(i, n) rep(j, n)
+    cin >> n;
+    for (int i = 1; i < n; i++)
+        cin >> b[i];
+    b[0] = b[n] = 0;
+    for (int i = 1; i <= n; i++)
+        a[i] = b[i - 1] | b[i];
+    bool valid = true;
+    for (int i = 1; i < n; i++)
+        if ((a[i] & a[i + 1]) != b[i])
+        {
+            valid = false;
+            break;
+        }
+    if (valid)
     {
-        char x;
-        see(x);
-        if (x == '1')
-            a[i][j] = 1;
+        for (int i = 1; i <= n; i++)
+            cout << a[i] << ' ';
+        cout << '\n';
     }
-    int cnt = 0;
-    if (k == 1)
-        rep(i, n)
-        {
-            rep(j, n)
-            {
-                cout << a[i][j];
-                // cnt++;
-            }
-            cout << '\n';
-        }
-    // dbg(cnt);
-
-    // vvi b(k, vi(k, 0));
-    // int bx = 0, by = 0;
-    // for (int i = 0; i < n; i += k)
-    // {
-    //     bx++;
-    //     for (int j = 0; j < n; j += k)
-    //     {
-    //         by++;
-    //         if (a[i][j])
-    //             b[bx][by] = 1;
-    //     }
-    // }
     else
-        for (int i = 0; i < n; i += k)
-        {
-            for (int j = 0; j < n; j += k)
-            {
-                // if(a[i][j])b[i][j]=1;
-                // cout << b[i][j] << " ";
-                cout << a[i][j];
-            }
-            cout << '\n';
-        }
+        cout << -1 << endl;
 }
 //----------MAIN----------
 int32_t main()

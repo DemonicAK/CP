@@ -231,59 +231,15 @@ int diry[8] = {0, 1, -1, 0, -1, 1, -1, 1};
 const int N = 1;
 const int M = 1;
 int dp[N][M] = {0};
-int n, k;
+int n,;
 
 //----------SOLUTION----------
 void solve(int tc)
 {
-    DEBUG;
-    dbg(tc);
-    see(n, k);
-    vvi a(n, vi(n, 0));
+    DEBUG;dbg(tc);
+    memset(dp, -1, N * M * sizeof(int));
+    see(n);
 
-    rep(i, n) rep(j, n)
-    {
-        char x;
-        see(x);
-        if (x == '1')
-            a[i][j] = 1;
-    }
-    int cnt = 0;
-    if (k == 1)
-        rep(i, n)
-        {
-            rep(j, n)
-            {
-                cout << a[i][j];
-                // cnt++;
-            }
-            cout << '\n';
-        }
-    // dbg(cnt);
-
-    // vvi b(k, vi(k, 0));
-    // int bx = 0, by = 0;
-    // for (int i = 0; i < n; i += k)
-    // {
-    //     bx++;
-    //     for (int j = 0; j < n; j += k)
-    //     {
-    //         by++;
-    //         if (a[i][j])
-    //             b[bx][by] = 1;
-    //     }
-    // }
-    else
-        for (int i = 0; i < n; i += k)
-        {
-            for (int j = 0; j < n; j += k)
-            {
-                // if(a[i][j])b[i][j]=1;
-                // cout << b[i][j] << " ";
-                cout << a[i][j];
-            }
-            cout << '\n';
-        }
 }
 //----------MAIN----------
 int32_t main()
@@ -293,4 +249,8 @@ int32_t main()
     cin >> Tc;
     tc(Tc) solve(tc++);
     return 0;
+    #ifdef LOCAL
+    clock_t tStart = clock();
+    cerr<<fixed<<setprecision(10)<<"\nTime Taken: "<<(double)(clock()- tStart)/CLOCKS_PER_SEC<<endl;
+    #endif
 }

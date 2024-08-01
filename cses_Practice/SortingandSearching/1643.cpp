@@ -10,9 +10,6 @@ Author: Arijit Kar (DemonicAK)
 using namespace __gnu_pbds;
 using namespace std;
 //----------MACROS----------
-#define ln '\n'
-#define yes "YES"
-#define no "NO"
 typedef long long ll;
 #define ll long long
 #define ull unsigned long long
@@ -52,35 +49,14 @@ using Multiset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_stati
 #define Fo(i, k, n) for (i = k; k < n ? i < n : i > n; k < n ? i += 1 : i -= 1)
 #define forn(a, b, c) for (int(a) = (b); (a) < (c); ++(a))
 #define forne(a, b, c) for (int(a) = (b); (a) <= (c); ++(a))
-#define forde(a, b, c) for (int(a) = (b); (a) >= (c); --(a))
+#define ford(a, b, c) for (int(a) = (b); (a) >= (c); --(a))
 #define forsq(a, b, c) for (int(a) = (b); (a) * (a) <= (c); ++(a))
 #define forc(a, b, c) for (char(a) = (b); (a) <= (c); ++(a))
 #define foreach(a, b) for (auto &(a) : (b))
 #define rep(i, n) forn(i, 0, n)
-#define repsh(i, n) forne(i, 1, n)
+#define repn(i, n) forne(i, 1, n)
 #define tc(t) while (t--)
 // ----------INPUT/OUTPUT----------
-void IOSETUP(string filename = "")
-{
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    if (filename.size() > 0)
-    {
-#ifndef ONLINE_JUDGE
-        freopen((filename + ".in").c_str(), "r", stdin);
-        freopen((filename + ".out").c_str(), "w", stdout);
-#endif
-    }
-    else
-    {
-#ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-        freopen("output.txt", "w", stdout);
-        freopen("error.txt", "w", stderr);
-#endif
-    }
-}
 template <typename... T>
 void see(T &...args) { ((cin >> args), ...); }
 #define seea(a, x, y)           \
@@ -110,7 +86,25 @@ void putl(T &&...args)
     ((cout << args << " "), ...);
     cout << '\n';
 }
+//----------operations----------
+#define maxoff(a, b) a = max(a, b)
+#define minoff(a, b) a = min(a, b)
+#define sqr(x) ((ll)(x) * (x))
 
+#define all(v) v.begin(), v.end()
+#define allarr(arr, sz) arr, arr + sz
+#define sortall(v) sort(all(v))
+#define reverseall(v) reverse(all(v))
+#define sortarr(arr, sz) sort(allsz(arr, sz))
+#define reversearr(arr, sz) reverse(allsz(arr, sz))
+#define binarysearch(arr, sz, val) (lower_bound(all(arr), val) - arr)
+#define sz(x) ((ll)(x).size())
+#define permute next_permutation
+
+#define pb push_back
+#define F first
+#define S second
+#define mp make_pair
 //----------DEBUGGING----------
 #define error(args...)                           \
     {                                            \
@@ -152,28 +146,43 @@ void dbg_out(Head H, Tail... T)
 #define clr(x) memset(x, false, sizeof(x))
 #define gc getchar_unlocked
 #define setpr(x) cout << setprecision(x) << fixed
-//----------operations----------
-#define maxoff(a, b) a = max(a, b)
-#define minoff(a, b) a = min(a, b)
-#define sqr(x) ((ll)(x) * (x))
-#define siz(x) ((ll)(x).size())
+#define fastIO                        \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL);                    \
+    cout.tie(NULL);
+//----------CONSTANTS----------
+const ld PI = acos(-1);
+const ld EPS = 1e-9;
+const int INF = INT_MAX;
+const long long INFF = LONG_LONG_MAX;
+#define mod 1000000007 // 1e9+7
+ll MOD = 998244353;
+#define infL 1e18
+const int infinity = 1e9;
+#define mxN 1000005
+const int N = mxN;
+int dirx[8] = {-1, 0, 0, 1, -1, -1, 1, 1};
+int diry[8] = {0, 1, -1, 0, -1, 1, -1, 1};
 
-#define all(v) v.begin(), v.end()
-#define allarr(arr, sz) arr, arr + sz
-#define sortv(v) sort(all(v))
-#define sortarr(arr, sz) sort(allsz(arr, sz))
-#define reversev(v) reverse(all(v))
-#define reversearr(arr, sz) reverse(allsz(arr, sz))
-#define binarysearch(arr, sz, val) (lower_bound(all(arr), val) - arr)
-
-#define permute next_permutation
-#define pb push_back
-#define F first
-#define S second
-#define mp make_pair
-
-//----------STRING/INT OPERATIONS----------
-
+//----------GLOBALS----------
+void usaco(string filename = "")
+{
+    if (filename.size() > 0)
+    {
+#ifndef ONLINE_JUDGE
+        freopen((filename + ".in").c_str(), "r", stdin);
+        freopen((filename + ".out").c_str(), "w", stdout);
+#endif
+    }
+    else
+    {
+#ifndef ONLINE_JUDGE
+        freopen("input.txt", "r", stdin);
+        freopen("output.txt", "w", stdout);
+        freopen("error.txt", "w", stderr);
+#endif
+    }
+}
 inline string IntToString(ll a)
 {
     char x[100];
@@ -215,82 +224,37 @@ inline string lowercase(string s)
     return s;
 }
 
-//----------CONSTANTS----------
-const ld PI = acos(-1);
-const ld EPS = 1e-9;
-const int INF = INT_MAX;
-const long long INFF = LONG_LONG_MAX;
-#define mod 1000000007 // 1e9+7
-ll MOD = 998244353;
-#define infL 1e18
-const int inf = 1e9;
-const int mxN = 1e5 + 7; // row
-const int mxM = 1e5 + 7; // col
-int dirx[8] = {-1, 0, 0, 1, -1, -1, 1, 1};
-int diry[8] = {0, 1, -1, 0, -1, 1, -1, 1};
-const int N = 1;
-const int M = 1;
-int dp[N][M] = {0};
-int n, k;
-
 //----------SOLUTION----------
-void solve(int tc)
+int n;
+void solve()
 {
     DEBUG;
-    dbg(tc);
-    see(n, k);
-    vvi a(n, vi(n, 0));
-
-    rep(i, n) rep(j, n)
+    see(n);
+    ll sum = 0;
+    ll ans = INT_MIN;
+    rep(i, n)
     {
-        char x;
-        see(x);
-        if (x == '1')
-            a[i][j] = 1;
+        int x;
+        cin >> x;
+        sum += x;
+        ans = max(ans, sum);
+        if (sum < 0)
+            sum = 0;
     }
-    int cnt = 0;
-    if (k == 1)
-        rep(i, n)
-        {
-            rep(j, n)
-            {
-                cout << a[i][j];
-                // cnt++;
-            }
-            cout << '\n';
-        }
-    // dbg(cnt);
 
-    // vvi b(k, vi(k, 0));
-    // int bx = 0, by = 0;
-    // for (int i = 0; i < n; i += k)
-    // {
-    //     bx++;
-    //     for (int j = 0; j < n; j += k)
-    //     {
-    //         by++;
-    //         if (a[i][j])
-    //             b[bx][by] = 1;
-    //     }
-    // }
-    else
-        for (int i = 0; i < n; i += k)
-        {
-            for (int j = 0; j < n; j += k)
-            {
-                // if(a[i][j])b[i][j]=1;
-                // cout << b[i][j] << " ";
-                cout << a[i][j];
-            }
-            cout << '\n';
-        }
+    cout << ans << '\n';
 }
 //----------MAIN----------
 int32_t main()
 {
-    IOSETUP();
-    int Tc = 1, tc = 0;
-    cin >> Tc;
-    tc(Tc) solve(tc++);
+    fastIO;
+    usaco();
+    int T = 1;
+    // cin >> T;
+    tc(T)
+    {
+        solve();
+        cout << '\n';
+    }
     return 0;
 }
