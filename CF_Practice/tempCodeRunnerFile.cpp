@@ -1,2 +1,2 @@
-    // if (tc == 3)
-    //     dbg(i, j);
+    for (int i = 1; i <= med; i++)
+        cout << i << " ";
