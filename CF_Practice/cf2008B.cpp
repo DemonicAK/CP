@@ -236,17 +236,22 @@ int n;
 //----------SOLUTION----------
 void solve(int tc)
 {
-    DEBUG;
-    dbg(tc);
+    DEBUG;dbg(tc);
     memset(dp, -1, N * M * sizeof(int));
     see(n);
-    string s;
-    see(s);
-    if (s[0] == s[n - 1])
-        putl(no);
-    else
-        putl(yes);
-    return;
+    // 4====0
+    // 9-----1
+    // 16-------4 (n^2 -(n-2)^2)
+    // 25 ----9
+    // 36-------16
+
+    string s;see(s);
+    int cnt=0;
+    foreach(x,s)if(x==0)cnt++;
+    double r=sqrt(n);
+    
+    
+
 }
 //----------MAIN----------
 int32_t main()
@@ -256,9 +261,4 @@ int32_t main()
     cin >> Tc;
     tc(Tc) solve(tc++);
     return 0;
-#ifdef LOCAL
-    clock_t tStart = clock();
-    cerr << fixed << setprecision(10) << "\nTime Taken: " << (double)(clock() - tStart) / CLOCKS_PER_SEC << endl;
-#endif
 }
-

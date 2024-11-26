@@ -231,16 +231,28 @@ int diry[8] = {0, 1, -1, 0, -1, 1, -1, 1};
 const int N = 1;
 const int M = 1;
 int dp[N][M] = {0};
-int l,r;
+int a, b;
 
 //----------SOLUTION----------
 void solve(int tc)
 {
-    DEBUG;dbg(tc);
+    DEBUG;
+    dbg(tc);
     memset(dp, -1, N * M * sizeof(int));
-    see(l,r);
-    
-
+    see(a, b);
+    if (a % 2)
+    {
+        cout << "NO" << endl;
+    }
+    else
+    {
+        if (b % 2 == 0)cout << "YES" << endl;
+        else
+        {
+            if (a == 0) cout << "NO" << endl;
+            else cout << "YES" << endl; 
+        }
+    }
 }
 //----------MAIN----------
 int32_t main()
@@ -250,8 +262,4 @@ int32_t main()
     cin >> Tc;
     tc(Tc) solve(tc++);
     return 0;
-    #ifdef LOCAL
-    clock_t tStart = clock();
-    cerr<<fixed<<setprecision(10)<<"\nTime Taken: "<<(double)(clock()- tStart)/CLOCKS_PER_SEC<<endl;
-    #endif
 }
