@@ -15,7 +15,3 @@ it is for bash terminal can be used anywhere
 
 CSES DP BLOG FOR EDITORIAL
 [https://codeforces.com/blog/entry/70018]
-
-**fajsdlkf**
-fdfdffdsfajflaskfjlasgjlasfkdjlsa
-**fjalsdkfj**

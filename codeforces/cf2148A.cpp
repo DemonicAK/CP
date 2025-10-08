@@ -2,8 +2,8 @@
 Problem Name:
 Problem Link:
 Author: Arijit Kar (DemonicAK)
-"In programming, the hard part isn’t solving problems,
-        but deciding what problems to solve." - Me
+"In programming, the hard part isn’t solving problems, 
+        but deciding what problems to solve." - Me 
 */
 //----------HEADER----------
 #include <bits/stdc++.h>
@@ -106,7 +106,7 @@ void putl(T &&...args)
     ((cout << args << " "), ...);
     cout << '\n';
 }
-#define printvec(v, n)     \
+#define printvec(v, n)        \
     REP(i, n)              \
     printf("%lld ", v[i]); \
     printf("\n");
@@ -225,6 +225,7 @@ int diry[8] = {0, 1, -1, 0, -1, 1, -1, 1};
     cin.tie(NULL);                    \
     cout.tie(NULL);
 
+
 //----------Extra Functions----------
 void IOSETUP(string filename = "")
 {
@@ -315,11 +316,11 @@ int mex(vi &a)
 // O(n)
 int MEX(vi const &A)
 {
-    static bool used[2 * mxN + 1] = {0};
+    static bool used[2*mxN + 1] = {0};
     // mark the given numbers
     for (const int &x : A)
     {
-        if (x <= 2 * mxN)
+        if (x <= 2*mxN)
             used[x] = true;
     }
     // find the mex
@@ -329,7 +330,7 @@ int MEX(vi const &A)
     // clear the array again
     for (int x : A)
     {
-        if (x <= 2 * mxN)
+        if (x <= 2*mxN)
             used[x] = false;
     }
     return result;
@@ -379,67 +380,22 @@ inline int DIV(int a, int b, int m)
     return (a * EXP(b, m - 2)) % m;
 }
 
+
 //----------GLOBALS----------
 const int N = 1;
 const int M = 1;
 int dp[N][M] = {0};
 
+
 //----------SOLUTION----------
-int legit(vvi &board, int x, int y)
-{
-    for(int i=0;i<=x;i++)if(board[i][y]==2)return 0;
-    for (int j=0;j<=y;j++)if(board[x][j]==2)return 0;
-    return 1;
-}
-int solver(vvi &board, int currx, int curry, int count)
-{
-    // dbg('running');
-    int nottakeside = 0, takeside = 0, nottakedown = 0, takedown = 0;
-//base
-    if (count == 8)return 1;
-    
-//not take
-    if (currx+1<=7 &&  board[currx + 1][curry] != 1)
-    nottakeside = solver(board, currx + 1, curry, count);
-    if ( curry+1<=7 && board[currx][curry + 1] != 1)
-    takeside = solver(board, currx, curry + 1, count);
-
-    // take calculate re instatiate (backtrack)
-    int legitbit = legit(board, currx, curry);
-    if(legitbit)board[currx][curry] = 2;
-
-    if (currx+1<=7 && board[currx + 1][curry] != 1 && legitbit)
-    takeside = solver(board, currx + 1, curry, count + 1);
-    
-    if (curry+1<=7 && board[currx][curry + 1] != 1 && legitbit)
-    nottakedown = solver(board, currx, curry + 1, count);
-    board[currx][curry] = 0;
-
-
-return nottakeside + takeside + nottakedown + takedown;
-}
-
 void solve(int tc)
 {
     DEBUG;
-    // intr(n);
-    vvi board(8, vi(8, 0));
-    int count=0;
+    intr(x,n);
+    if(n&1)putl(x);
+    else putl(0);
+    
 
-    rep(i,8)
-    {
-        rep(j, 8)
-        {
-            char x;
-            cin >> x;
-            if (x == '*')
-                {board[i][j] = 1;count++;}
-        }
-    }
-    dbg(board[0][0]);
-
-    dbg(count);
-    cout << solver(board, 0, 0,0);
 }
 //----------MAIN----------
 int32_t main()
@@ -447,10 +403,10 @@ int32_t main()
     auto start = high_resolution_clock::now();
     IOSETUP();
     int Tc = 1, tc = 0;
-    // cin >> Tc;
+    cin >> Tc;
     tc(Tc) solve(tc++);
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start).count();
     dbg(duration, "microseconds");
-    return 0; 
+    return 0;
 }
